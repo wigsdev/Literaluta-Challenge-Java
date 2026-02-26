@@ -118,10 +118,10 @@ Recuerda utilizar las clases proporcionadas por Jackson, como `ObjectMapper`, pa
 ---
 
 ### Checklist de finalización
-- [ ] Incorporar la dependencia de Jackson (v2.17+) en el `pom.xml`.
-- [ ] Definir los Records/Clases (DTOs) en Java que representen la estructura del JSON que devuelve Gutendex.
-- [ ] Utilizar la clase `ObjectMapper` de Jackson para convertir (deserializar) la cadena JSON obtenida de la API en objetos Java.
-- [ ] Validar que los datos se mapean correctamente y pueden ser mostrados en consola accediendo a las propiedades del objeto Java.
+- [x] Incorporar la dependencia de Jackson (v2.17+) en el `pom.xml`.
+- [x] Definir los Records/Clases (DTOs) en Java que representen la estructura del JSON que devuelve Gutendex.
+- [x] Utilizar la clase `ObjectMapper` de Jackson para convertir (deserializar) la cadena JSON obtenida de la API en objetos Java.
+- [x] Validar que los datos se mapean correctamente y pueden ser mostrados en consola accediendo a las propiedades del objeto Java.
 
 ---
 
@@ -141,11 +141,11 @@ Es fundamental crear métodos específicos para manejar estos datos, lo que har�
 ---
 
 ### Checklist de finalización
-- [ ] Mapear los datos de las respuestas a Clases Base (Ej: `Libro`, `Autor`).
-- [ ] Usar `@JsonAlias` para asociar las claves del JSON con los nombres de variables en Java (si difieren).
-- [ ] Usar `@JsonIgnoreProperties(ignoreUnknown = true)` para ignorar los datos del JSON que no necesitamos en nuestro modelo.
-- [ ] Implementar métodos `toString()` amigables para la visualización de datos.
-- [ ] Comprobar que los objetos instanciados contienen los datos correctos tras la deserialización.
+- [x] Mapear los datos de las respuestas a Clases Base (Ej: `Libro`, `Autor`).
+- [x] Usar `@JsonAlias` para asociar las claves del JSON con los nombres de variables en Java (si difieren).
+- [x] Usar `@JsonIgnoreProperties(ignoreUnknown = true)` para ignorar los datos del JSON que no necesitamos en nuestro modelo.
+- [x] Implementar métodos `toString()` amigables para la visualización de datos.
+- [x] Comprobar que los objetos instanciados contienen los datos correctos tras la deserialización.
 
 ---
 

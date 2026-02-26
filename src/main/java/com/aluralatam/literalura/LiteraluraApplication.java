@@ -1,6 +1,8 @@
 package com.aluralatam.literalura;
 
+import com.aluralatam.literalura.model.DatosGutendex;
 import com.aluralatam.literalura.service.ConsumoAPI;
+import com.aluralatam.literalura.service.ConvierteDatos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +14,9 @@ public class LiteraluraApplication implements CommandLineRunner {
 	@Autowired
 	private ConsumoAPI consumoAPI;
 
+	@Autowired
+	private ConvierteDatos conversor;
+
 	public static void main(String[] args) {
 		SpringApplication.run(LiteraluraApplication.class, args);
 	}
@@ -19,8 +24,9 @@ public class LiteraluraApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		var json = consumoAPI.obtenerDatos("https://gutendex.com/books/?search=cien+anos+de+soledad");
-		System.out.println("*************** RESPUESTA DE LA API GUTENDEX ***************");
-		System.out.println(json);
-		System.out.println("************************************************************");
+		var datos = conversor.obtenerDatos(json, DatosGutendex.class);
+		System.out.println("*************** DATOS DESERIALIZADOS ***************");
+		System.out.println(datos);
+		System.out.println("****************************************************");
 	}
 }
