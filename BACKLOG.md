@@ -68,9 +68,9 @@ Asegúrate de seguir cuidadosamente las instrucciones proporcionadas por la API 
 ---
 
 ### Checklist de finalización
-- [ ] Revisar la documentación o el sitio oficial de la API de Gutendex.
-- [ ] Aprender cómo realizar consultas a la API (estructura de los endpoints, paginación, filtros).
-- [ ] Realizar pruebas de consultas HTTP a la API (por ejemplo, con herramientas como Postman, Hoppscotch o desde el navegador) para ver la estructura de respuesta (JSON).
+- [x] Revisar la documentación o el sitio oficial de la API de Gutendex.
+- [x] Aprender cómo realizar consultas a la API (estructura de los endpoints, paginación, filtros).
+- [x] Realizar pruebas de consultas HTTP a la API (por ejemplo, con herramientas como Postman, Hoppscotch o desde el navegador) para ver la estructura de respuesta (JSON).
 
 ---
 
@@ -93,11 +93,11 @@ En esta fase del desafío, nos enfocaremos en escribir el código en Java necesa
 ---
 
 ### Checklist de finalización
-- [ ] Crear un componente/servicio en Java dedicado al consumo de APIs.
-- [ ] Instanciar un `HttpClient`.
-- [ ] Construir un `HttpRequest` apuntando a la URL de Gutendex (ej. buscar un libro por título).
-- [ ] Enviar la solicitud y recibir un `HttpResponse`.
-- [ ] Imprimir o capturar el `body` de la respuesta (JSON) en la consola para validar que funciona la conexión.
+- [x] Crear un componente/servicio en Java dedicado al consumo de APIs.
+- [x] Instanciar un `HttpClient`.
+- [x] Construir un `HttpRequest` apuntando a la URL de Gutendex (ej. buscar un libro por título).
+- [x] Enviar la solicitud y recibir un `HttpResponse`.
+- [x] Imprimir o capturar el `body` de la respuesta (JSON) en la consola para validar que funciona la conexión.
 
 ---
 
