@@ -1,17 +1,34 @@
 package com.aluralatam.literalura.principal;
 
+import com.aluralatam.literalura.model.Autor;
+import com.aluralatam.literalura.model.DatosAutor;
+import com.aluralatam.literalura.model.DatosGutendex;
+import com.aluralatam.literalura.model.DatosLibro;
+import com.aluralatam.literalura.model.Libro;
+import com.aluralatam.literalura.repository.AutorRepository;
+import com.aluralatam.literalura.repository.LibroRepository;
 import com.aluralatam.literalura.service.ConsumoAPI;
 import com.aluralatam.literalura.service.ConvierteDatos;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.InputMismatchException;
+import java.util.Optional;
 import java.util.Scanner;
 
+@Component
 public class Principal {
 
     private Scanner teclado = new Scanner(System.in);
     private ConsumoAPI consumoAPI = new ConsumoAPI();
     private ConvierteDatos conversor = new ConvierteDatos();
     private final String URL_BASE = "https://gutendex.com/books/?search=";
+
+    @Autowired
+    private LibroRepository libroRepository;
+
+    @Autowired
+    private AutorRepository autorRepository;
 
     public void muestraElMenu() {
         var opcion = -1;
@@ -39,7 +56,7 @@ public class Principal {
 
                 switch (opcion) {
                     case 1:
-                        System.out.println("Opción 1 en construcción...");
+                        buscarLibroPorTitulo();
                         break;
                     case 2:
                         System.out.println("Opción 2 en construcción...");
@@ -64,5 +81,44 @@ public class Principal {
                 teclado.nextLine(); // Limpiar el buffer del scanner
             }
         }
+    }
+
+    private void buscarLibroPorTitulo() {
+        System.out.println("Ingrese el nombre del libro que desea buscar:");
+        var titulo = teclado.nextLine();
+
+        // 1. Verificar si ya existe en la BD local
+        Optional<Libro> libroLocal = libroRepository.findByTituloIgnoreCase(titulo);
+        if (libroLocal.isPresent()) {
+            System.out.println("El libro ya existe en la base de datos local:");
+            System.out.println(libroLocal.get());
+            return;
+        }
+
+        // 2. Buscar en la API Gutendex
+        var json = consumoAPI.obtenerDatos(URL_BASE + titulo.replace(" ", "%20"));
+        var datosGutendex = conversor.obtenerDatos(json, DatosGutendex.class);
+
+        if (datosGutendex.resultados().isEmpty()) {
+            System.out.println("⚠️ Libro no encontrado en la API de Gutendex.");
+            return;
+        }
+
+        // 3. Tomar el primer libro
+        DatosLibro datosLibro = datosGutendex.resultados().get(0);
+        Libro libro = new Libro(datosLibro);
+
+        // 4. Mapear y guardar el Autor si existe
+        if (!datosLibro.autores().isEmpty()) {
+            DatosAutor datosAutor = datosLibro.autores().get(0);
+            Autor autor = autorRepository.findByNombreIgnoreCase(datosAutor.nombre())
+                    .orElseGet(() -> autorRepository.save(new Autor(datosAutor)));
+            libro.setAutor(autor);
+        }
+
+        // 5. Guardar el Libro
+        libroRepository.save(libro);
+        System.out.println("\n✅ Libro guardado exitosamente: ");
+        System.out.println(libro);
     }
 }
