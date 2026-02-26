@@ -163,12 +163,12 @@ Recuerda exhibirle al usuario la información que ha demandado e informarle cuan
 ---
 
 ### Checklist de finalización
-- [ ] Implementar `CommandLineRunner` en la clase principal de la app Spring Boot.
-- [ ] Instanciar un objeto `Scanner` para leer las entradas de la cónsola.
-- [ ] Diseñar y mostrar un menú interactivo ciclico (con un `while` o `do-while`).
-- [ ] Desarrollar un bloque condicional (ej. `switch-case`) que administre las opciones numéricas del menú.
-- [ ] Mostrar mensajes claros de salida y manejar de forma controlada los posibles errores de entrada de datos (ej. usuario escribe una letra en lugar de número).
-- [ ] Realizar pruebas manuales navegando por el menú para comprobar que no haya ciclos infinitos ni cierres inesperados.
+- [x] Implementar `CommandLineRunner` en la clase principal de la app Spring Boot.
+- [x] Instanciar un objeto `Scanner` para leer las entradas de la cónsola.
+- [x] Diseñar y mostrar un menú interactivo ciclico (con un `while` o `do-while`).
+- [x] Desarrollar un bloque condicional (ej. `switch-case`) que administre las opciones numéricas del menú.
+- [x] Mostrar mensajes claros de salida y manejar de forma controlada los posibles errores de entrada de datos (ej. usuario escribe una letra en lugar de número).
+- [x] Realizar pruebas manuales navegando por el menú para comprobar que no haya ciclos infinitos ni cierres inesperados.
 
 ---
 
