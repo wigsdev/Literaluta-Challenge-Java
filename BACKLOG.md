@@ -370,7 +370,7 @@ Ahora que tu proyecto ya está listo, recuerda enviar el enlace del repositorio 
 ---
 
 ### Checklist de finalización (Extras)
-- [ ] Utilizar `DoubleSummaryStatistics` para estadísticas (Ej: PromedioDescargas / DescargasMaximas de la BD).
+- [x] Utilizar `DoubleSummaryStatistics` para estadísticas (Ej: PromedioDescargas / DescargasMaximas de la BD).
 - [ ] Desarrollar menú u opción para ver el Top 10 de libros.
 - [ ] Implementar la consulta a la BD (Repository) que busque `Autor` por partes de su nombre (usando `findByNombreContainingIgnoreCase`).
 - [ ] Implementar y ensayar otras consultas personalizadas requeridas sobre el repositorio de JPA (Ej. Autores cuyo año de fallecimiento sea `null` o buscar en rango de años específico).

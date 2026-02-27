@@ -12,6 +12,7 @@ import com.aluralatam.literalura.service.ConvierteDatos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.DoubleSummaryStatistics;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Optional;
@@ -46,6 +47,7 @@ public class Principal {
                     3 - Listar autores guardados
                     4 - Listar autores vivos en un determinado año
                     5 - Listar libros por idioma
+                    6 - Generar estadísticas de descargas (Extra)
 
                     0 - Salir
                     ==========================================
@@ -70,6 +72,9 @@ public class Principal {
                         break;
                     case 5:
                         buscarLibrosPorIdioma();
+                        break;
+                    case 6:
+                        generarEstadisticas();
                         break;
                     case 0:
                         System.out.println("Cerrando la aplicación... ¡Hasta pronto!");
@@ -103,6 +108,27 @@ public class Principal {
             librosPorIdioma.forEach(System.out::println);
             System.out.println("\n📊 Cantidad total de libros encontrados en ese idioma: " + librosPorIdioma.size());
         }
+    }
+
+    private void generarEstadisticas() {
+        var libros = libroRepository.findAll();
+
+        if (libros.isEmpty()) {
+            System.out.println("❌ No hay libros registrados en la base de datos para generar estadísticas.");
+            return;
+        }
+
+        System.out.println("\n📊 *** ESTADÍSTICAS DE DESCARGAS (Registros Locales) ***");
+        DoubleSummaryStatistics est = libros.stream()
+                .filter(l -> l.getNumeroDeDescargas() != null && l.getNumeroDeDescargas() > 0)
+                .mapToDouble(Libro::getNumeroDeDescargas)
+                .summaryStatistics();
+
+        System.out.println("Total de libros evaluados: " + est.getCount());
+        System.out.println("Promedio de descargas: " + Math.round(est.getAverage() * 100.0) / 100.0);
+        System.out.println("Mayor cantidad de descargas: " + est.getMax());
+        System.out.println("Menor cantidad de descargas: " + est.getMin());
+        System.out.println("**********************************************************\n");
     }
 
     private void buscarAutoresVivosPorAnio() {
