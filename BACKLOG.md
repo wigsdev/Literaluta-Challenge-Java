@@ -283,10 +283,10 @@ No es necesario crear opciones para todos los idiomas de la API. Elija como **m�
 ---
 
 ### Checklist de finalización
-- [ ] Implementar opción en el menú consultando los idiomas habilitados al usuario.
-- [ ] Realizar una *derived query* en el `LibroRepository` (ej. `countByIdioma(String idioma)` o `findByIdioma(String idioma)`).
-- [ ] Procesar y mostrar al usuario en la consola cuántos o cuáles libros se tienen registrados bajo ese idioma elegido.
-- [ ] Manejar opción de error si un usuario introduce un idioma inválido.
+- [x] Implementar opción en el menú consultando los idiomas habilitados al usuario.
+- [x] Realizar una *derived query* en el `LibroRepository` (ej. `countByIdioma(String idioma)` o `findByIdioma(String idioma)`).
+- [x] Procesar y mostrar al usuario en la consola cuántos o cuáles libros se tienen registrados bajo ese idioma elegido.
+- [x] Manejar opción de error si un usuario introduce un idioma inválido.
 
 ---
 

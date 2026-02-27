@@ -69,7 +69,7 @@ public class Principal {
                         buscarAutoresVivosPorAnio();
                         break;
                     case 5:
-                        System.out.println("Opción 5 en construcción...");
+                        buscarLibrosPorIdioma();
                         break;
                     case 0:
                         System.out.println("Cerrando la aplicación... ¡Hasta pronto!");
@@ -81,6 +81,27 @@ public class Principal {
                 System.out.println("⚠️ Entrada inválida. Por favor, introduzca un número entero (0-5).");
                 teclado.nextLine(); // Limpiar el buffer del scanner
             }
+        }
+    }
+
+    private void buscarLibrosPorIdioma() {
+        System.out.println("""
+                Ingrese el idioma para buscar los libros:
+                es - español
+                en - inglés
+                fr - francés
+                pt - portugués
+                """);
+        var idioma = teclado.nextLine().toLowerCase();
+
+        List<Libro> librosPorIdioma = libroRepository.findByIdioma(idioma);
+
+        if (librosPorIdioma.isEmpty()) {
+            System.out.println("❌ No se encontraron libros registrados en ese idioma.");
+        } else {
+            System.out.println("\n📚 *** LIBROS EN IDIOMA '" + idioma.toUpperCase() + "' ***");
+            librosPorIdioma.forEach(System.out::println);
+            System.out.println("\n📊 Cantidad total de libros encontrados en ese idioma: " + librosPorIdioma.size());
         }
     }
 
