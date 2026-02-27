@@ -12,6 +12,7 @@ import com.aluralatam.literalura.service.ConvierteDatos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -48,6 +49,7 @@ public class Principal {
                     4 - Listar autores vivos en un determinado año
                     5 - Listar libros por idioma
                     6 - Generar estadísticas de descargas (Extra)
+                    7 - Top 10 libros más descargados (Extra)
 
                     0 - Salir
                     ==========================================
@@ -75,6 +77,9 @@ public class Principal {
                         break;
                     case 6:
                         generarEstadisticas();
+                        break;
+                    case 7:
+                        buscarTop10Libros();
                         break;
                     case 0:
                         System.out.println("Cerrando la aplicación... ¡Hasta pronto!");
@@ -129,6 +134,24 @@ public class Principal {
         System.out.println("Mayor cantidad de descargas: " + est.getMax());
         System.out.println("Menor cantidad de descargas: " + est.getMin());
         System.out.println("**********************************************************\n");
+    }
+
+    private void buscarTop10Libros() {
+        var libros = libroRepository.findAll();
+
+        if (libros.isEmpty()) {
+            System.out.println("❌ No hay libros registrados en la base de datos.");
+            return;
+        }
+
+        System.out.println("\n🏆 *** TOP 10 LIBROS MÁS DESCARGADOS ***");
+        libros.stream()
+                .filter(l -> l.getNumeroDeDescargas() != null)
+                .sorted(Comparator.comparing(Libro::getNumeroDeDescargas).reversed())
+                .limit(10)
+                .forEach(l -> System.out
+                        .println("▶ " + l.getTitulo() + " (" + l.getNumeroDeDescargas() + " descargas)"));
+        System.out.println("*****************************************\n");
     }
 
     private void buscarAutoresVivosPorAnio() {
