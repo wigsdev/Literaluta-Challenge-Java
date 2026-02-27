@@ -1,68 +1,73 @@
-# Literalura: Catálogo Interactivo de Libros 📚
+<h1 align="center">📚 Challenge Literalura</h1>
 
-![Literalura Banner](https://img.shields.io/badge/Status-En%20Desarrollo-orange) ![Java](https://img.shields.io/badge/Java-25-red) ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3+-green) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue)
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"/>
+  <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring&logoColor=white" alt="Spring Boot"/>
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
+  <img src="https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white" alt="Hibernate"/>
+  <img src="https://img.shields.io/badge/Maven-C71A22?style=for-the-badge&logo=apachemaven&logoColor=white" alt="Maven"/>
+</p>
 
-**Literalura** es un ambicioso desafío de programación que te provee un moderno catálogo de libros administrable desde la terminal. Realiza consultas en tiempo real a una API externa de biblioteca gratuita, extrae valiosa información serializada y nutre a nuestra propia base de datos local para ejecutar analíticas y búsquedas potentes.
+## 📖 Descripción del Proyecto
 
-🔗 **Enlace oficial del desafío:** [Challenge Spring Boot - Literalura](https://app.aluracursos.com/course/challenge-spring-boot-literalura)
+¡Bienvenido a **Literalura**! Esta aplicación de consola (CLI) es un catálogo interactivo de libros desarrollado en Java con el framework Spring Boot. 
 
----
-
-## 🚀 Características Principales
-
-Esta aplicación de consola impulsada por **Spring Boot CommandLineRunner** permite al usuario interactuar a través de un menú textual que ofrece, entre otras, las siguientes capacidades:
-
-1. **Búsqueda Avanzada de Libros en API Remota:** Rastrea cualquier libro por su título utilizando el motor gratuito Gutendex.
-2. **Registro Automático y Relacional:** Al encontrar una coincidencia, tanto el Libro como sus Autores quedan debidamente almacenados (sin repeticiones) dentro del motor relacional PostgreSQL.
-3. **Listado Histórico de Consultas:** Exhibe de forma estructurada todo el acervo literario recabado por el usuario previamente.
-4. **Listado de Autores Centralizado:** Extrae una nómina de cada escritor captado y registrado en la BD.
-5. **Busqueda de Autores por Época:** Realiza una búsqueda refinada calculando qué autores del catálogo estaban con vida en un año en específico ingresado por el usuario.
-6. **Filtros Estadísticos (Idioma):** Muestra el volumen demográfico de los libros por idiomas (ej: ¿Cuántos libros ingleses vs españoles tenemos registrados?).
+El proyecto consume la API pública de Gutendex para buscar información literaria en tiempo real (libros, autores, idiomas, descargas), procesa y filtra los datos (mapeo JSON a Java con Jackson), y finalmente los persiste en una base de datos **PostgreSQL** mediante **Spring Data JPA**. Una vez guardados, el sistema permite realizar consultas avanzadas al repositorio local combinando filtrados y estadísticas.
 
 ---
 
-## 🛠️ Stack Tecnológico
+## 🚀 Tecnologías Utilizadas
 
-La infraestructura del proyecto está edificada íntegramente de cara a las necesidades de **Backend** dictadas por la industria contemporánea:
-
-- **Lenguaje Transversal:** Java 25 (LTS)
-- **Framework Core:** Spring Boot (v3.3+)
-- **Persistencia de Datos:** Spring Data JPA / Hibernate
-- **Base de Datos:** PostgreSQL local (v16+)
-- **Procesamiento de Payload:** Jackson Annotations (Data Binding)
-- **Gestión de Paquetes y Construcción:** Maven
+*   ☕ **Java 25:** Lenguaje de programación principal para el backend.
+*   🍃 **Spring Boot 3:** Framework facilitador para la configuración y control de inversión.
+*   🗄️ **Spring Data JPA / Hibernate:** Capa de persistencia y mapeo objeto-relacional (ORM).
+*   🐘 **PostgreSQL 16:** Motor de bases de datos relacional para guardar el histórico.
+*   📦 **Jackson:** Librería esencial responsable de la deserialización de los JSON de la API.
+*   🛠️ **Maven:** Herramienta estandarizada para la gestión de dependencias y construcción.
 
 ---
 
-## 📄 Arquitectura Documental (Docs)
+## ⚙️ Funcionalidades del Menú
 
-Hemos adoptado metodologías ágiles y documentales severas para mantener el producto pulcro. Para entender internamente el desarrollo, navega la carpeta `/docs` y archivos en la ruta raíz:
+La aplicación te proveerá de un menú interactivo por terminal con las 5 funciones clave requeridas por el Challenge:
 
-- **`BACKLOG.md`**: Detalla el requerimiento íntegro subdividido en 13 Historias de Usuario con sus *"Checklists"*.
-- **`docs/plan_de_implementacion.md`**: Fases metódicas de abordaje del desafío Sprint tras Sprint.
-- **`docs/reglas_de_implementacion.md`**: Define el severo flujo *HU -> Desarrollo -> QA -> Commit Conventional*.
-- **`docs/roles_utilizados.md`**: Delimita responsabilidades simuladas (DBA, Backend, QA...).
-- **`docs/sdlc_literalura.md`**: El mapeo de las 7 fases maduras del ciclo de vida del software aplicadas en este Challenge.
-
----
-
-## ☕ Instalación y Ejecución Práctica
-
-Para inicializar y testear el catálogo personal de libros a nivel local, es imprescindible realizar estos pasos:
-
-### 1. Variables y Servicios
-- Asegúrate de contar con el IDE de tu preferencia y soporte para Java 25.
-- Debes tener el servicio de **PostgreSQL** montado en el puerto por defecto (5432) y tener creada una base de datos vacía local (ej: `literalura`).
-
-### 2. Configuración JPA (Próximamente)
-- Clonar el repositorio.
-- Acceder a los recursos (`src/main/resources/application.properties`) y conectar con las credenciales correspondientes a tu gestor local DB.
-
-### 3. Build & Run
-- Ubicarse en la ruta raíz.
-- Construir con Maven.
-- Ejecutar el `.jar` consolidado o utilizar el IDE.
+1.  🔍 **Buscar libro por título:** Consulta a la API de Gutendex por título, extrae metadatos y crea las instancias Java para registrar Libro y Autor (con verificación lógica para evitar duplicidades).
+2.  📚 **Listar libros buscados:** Consulta en la base de datos e imprime el historial de las obras literarias que tienes almacenadas en el sistema.
+3.  ✍️ **Listar autores guardados:** Imprime un catálogo extraído del repositorio con la información de los autores que han sido registrados junto con sus obras.
+4.  ⏳ **Listar autores vivos en un año determinado:** Usando *Derived Queries* precisos, analiza el histórico local, comparando año de nacimiento y defunción con el año introducido por el usuario, para filtrar autores que seguían con vida.
+5.  🌐 **Listar libros por idioma:** Ingresa el acrónimo estadístico (`es`, `en`, `fr`, `pt`) y el sistema te retornará detalles de dichos libros junto a la cantidad total (recuento / *size*).
 
 ---
 
-*Proyecto en vías de culminación para el programa ONE de Alura.*
+## 🛠️ Instrucciones de Instalación y Uso
+
+### 1. Pre-requisitos indispensables
+*   Tener el **Java Development Kit (JDK) 25** instalado en tu computadora.
+*   Motor de **PostgreSQL** corriendo localmente en el puerto `5432`.
+*   Crear una base de datos relacional vacía llamada `literalura`.
+
+### 2. Configurar el Entorno Principal
+Asegúrate de ejecutar la siguiente instrucción en tu consola `psql` o a través de herramientas gráficas como `pgAdmin` para tener el recipiente de almacenamiento listo:
+```sql
+CREATE DATABASE literalura;
+```
+*(Nota: Si tus credenciales de Postgresql locales no son `postgres` / `postgres`, actualiza tu usuario y clave en el archivo `application.properties` antes de arrancar).*
+
+### 3. Clonar y Desplegar
+Baja el repositorio desde GitHub e inicialízalo en segundos con el wrapper de Maven que ya viene preconfigurado:
+```bash
+# Clonar repositorio
+git clone https://github.com/tu-usuario/literalura.git
+cd literalura
+
+# Ejecutar el aplicativo (Linux / Mac)
+./mvnw spring-boot:run
+
+# Ejecutar el aplicativo (Windows CMD / PowerShell)
+.\mvnw.cmd spring-boot:run
+```
+
+---
+<p align="center">
+  <i>Desarrollado como parte del desafío (Challenge Literalura) correspondiente a la especialización Backend del programa educativo Alura ONE (Oracle Next Education).</i>
+</p>

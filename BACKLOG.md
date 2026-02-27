@@ -324,10 +324,10 @@ Ahora que estamos en la recta final del programa ONE, comencemos a desarrollar a
 ---
 
 ### Checklist de finalización
-- [ ] Documentar el nombre del proyecto y dar un contexto claro (Literalura).
-- [ ] Explicar cuáles tecnologías, frameworks y librerías externas se utilizaron (Java 25, Spring Boot, Spring Data JPA, PostgreSQL, Jackson).
-- [ ] Describir las características y funcionalidades principales de la aplicación.
-- [ ] Proveer instrucciones claras de cómo levantar y ejecutar el proyecto localmente.
+- [x] Documentar el nombre del proyecto y dar un contexto claro (Literalura).
+- [x] Explicar cuáles tecnologías, frameworks y librerías externas se utilizaron (Java 25, Spring Boot, Spring Data JPA, PostgreSQL, Jackson).
+- [x] Describir las características y funcionalidades principales de la aplicación.
+- [x] Proveer instrucciones claras de cómo levantar y ejecutar el proyecto localmente.
 - [ ] (Opcional pero muy recomendado) Insertar capturas de pantalla, GIFs o video del menú funcionando en la consola.
 
 ---
