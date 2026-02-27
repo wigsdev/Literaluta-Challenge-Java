@@ -345,11 +345,11 @@ Ahora que tu proyecto ya está listo, recuerda enviar el enlace del repositorio 
 ---
 
 ### Checklist de finalización
-- [ ] Asegurarse que todos los *commits* están subidos al repositorio remoto (`git push`).
-- [ ] Comprobar que el repositorio sea Público o accesible para el equipo revisor.
-- [ ] Ingresar al enlace proporcionado en la plataforma de Alura.
-- [ ] Pegar el link del repositorio GitHub.
-- [ ] ¡Descargar tu certificado de conclusión! 🎉
+- [x] Asegurarse que todos los *commits* están subidos al repositorio remoto (`git push`).
+- [x] Comprobar que el repositorio sea Público o accesible para el equipo revisor.
+- [x] Ingresar al enlace proporcionado en la plataforma de Alura.
+- [x] Pegar el link del repositorio GitHub.
+- [x] ¡Descargar tu certificado de conclusión! 🎉
 
 ---
 
