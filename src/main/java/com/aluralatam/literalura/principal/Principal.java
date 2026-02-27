@@ -51,6 +51,7 @@ public class Principal {
                     6 - Generar estadísticas de descargas (Extra)
                     7 - Top 10 libros más descargados (Extra)
                     8 - Buscar autor por nombre (Extra)
+                    9 - Buscar autores contemporáneos (Extra)
 
                     0 - Salir
                     ==========================================
@@ -84,6 +85,9 @@ public class Principal {
                         break;
                     case 8:
                         buscarAutorPorNombre();
+                        break;
+                    case 9:
+                        buscarAutoresContemporaneos();
                         break;
                     case 0:
                         System.out.println("Cerrando la aplicación... ¡Hasta pronto!");
@@ -191,6 +195,19 @@ public class Principal {
             System.out.println("\n🔍 *** COINCIDENCIAS LOCALES ENCONTRADAS ***");
             autoresCoincidentes.forEach(System.out::println);
             System.out.println("******************************************\n");
+        }
+    }
+
+    private void buscarAutoresContemporaneos() {
+        System.out.println("\nBuscando autores contemporáneos (fecha de fallecimiento desconocida o nula)...");
+        List<Autor> contemporaneos = autorRepository.findByFechaDeFallecimientoIsNull();
+
+        if (contemporaneos.isEmpty()) {
+            System.out.println("❌ No se encontraron autores contemporáneos registrados.");
+        } else {
+            System.out.println("\n🌟 *** AUTORES CONTEMPORÁNEOS ***");
+            contemporaneos.forEach(System.out::println);
+            System.out.println("***********************************\n");
         }
     }
 

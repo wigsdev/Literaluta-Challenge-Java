@@ -15,4 +15,6 @@ public interface AutorRepository extends JpaRepository<Autor, Long> {
             Integer fallecimiento);
 
     List<Autor> findByNombreContainingIgnoreCase(String nombre);
+
+    List<Autor> findByFechaDeFallecimientoIsNull();
 }
