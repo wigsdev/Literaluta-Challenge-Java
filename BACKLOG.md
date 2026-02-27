@@ -302,10 +302,10 @@ Recuerda hacer pruebas exhaustivas para recibir adecuadamente los datos numéric
 ---
 
 ### Checklist de finalización
-- [ ] Verificar o ajustar la *derived query* en `AutorRepository` que busca autores vivos en un año determinado (Año de muerte mayor igual al año buscado Y Año de nacimiento menor igual al año buscado).
-- [ ] Capturar el dato numérico del año en la consola mediante `Scanner`.
-- [ ] Validar con `try-catch` o lógica condicional que el usuario haya escrito realmente un número válido y no letras.
-- [ ] Mostrar adecuadamente la lista de autores vivos rescatada por JPA, o un mensaje amigable si la base de datos no tiene autores vivos en ese año específico.
+- [x] Verificar o ajustar la *derived query* en `AutorRepository` que busca autores vivos en un año determinado (Año de muerte mayor igual al año buscado Y Año de nacimiento menor igual al año buscado).
+- [x] Capturar el dato numérico del año en la consola mediante `Scanner`.
+- [x] Validar con `try-catch` o lógica condicional que el usuario haya escrito realmente un número válido y no letras.
+- [x] Mostrar adecuadamente la lista de autores vivos rescatada por JPA, o un mensaje amigable si la base de datos no tiene autores vivos en ese año específico.
 
 ---
 
