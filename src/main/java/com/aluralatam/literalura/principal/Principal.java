@@ -50,6 +50,7 @@ public class Principal {
                     5 - Listar libros por idioma
                     6 - Generar estadísticas de descargas (Extra)
                     7 - Top 10 libros más descargados (Extra)
+                    8 - Buscar autor por nombre (Extra)
 
                     0 - Salir
                     ==========================================
@@ -80,6 +81,9 @@ public class Principal {
                         break;
                     case 7:
                         buscarTop10Libros();
+                        break;
+                    case 8:
+                        buscarAutorPorNombre();
                         break;
                     case 0:
                         System.out.println("Cerrando la aplicación... ¡Hasta pronto!");
@@ -171,7 +175,22 @@ public class Principal {
             }
         } catch (InputMismatchException e) {
             System.out.println("⚠️ Entrada inválida. Por favor, introduzca un año en formato numérico (ej: 1940).");
-            teclado.nextLine();
+            System.out.println("❌ " + e.getMessage());
+        }
+    }
+
+    private void buscarAutorPorNombre() {
+        System.out.println("Escriba el nombre (o parte del nombre) del autor literario a buscar en el sistema local:");
+        var parteNombre = teclado.nextLine();
+
+        List<Autor> autoresCoincidentes = autorRepository.findByNombreContainingIgnoreCase(parteNombre);
+
+        if (autoresCoincidentes.isEmpty()) {
+            System.out.println("❌ No hallamos ningún autor guardado cuyo nombre contenga '" + parteNombre + "'.");
+        } else {
+            System.out.println("\n🔍 *** COINCIDENCIAS LOCALES ENCONTRADAS ***");
+            autoresCoincidentes.forEach(System.out::println);
+            System.out.println("******************************************\n");
         }
     }
 
