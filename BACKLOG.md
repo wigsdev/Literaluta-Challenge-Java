@@ -198,10 +198,10 @@ Adicionalmente, se debe posibilitar al usuario ver un listado con base en el idi
 ---
 
 ### Checklist de finalización
-- [ ] Configurar Entidad `@Entity` Libro en JPA con los atributos necesarios (título, autor, idioma único, descargas).
-- [ ] Implementar la búsqueda de un libro por su título hacia la API de Gutendex.
-- [ ] Extraer el primer resultado de la lista de libros devuelta por la API y guardar solo su primer idioma.
-- [ ] Guardar el libro consultado en la base de datos PostgreSQL usando un `Repository`.
+- [x] Configurar Entidad `@Entity` Libro en JPA con los atributos necesarios (título, autor, idioma único, descargas).
+- [x] Implementar la búsqueda de un libro por su título hacia la API de Gutendex.
+- [x] Extraer el primer resultado de la lista de libros devuelta por la API y guardar solo su primer idioma.
+- [x] Guardar el libro consultado en la base de datos PostgreSQL usando un `Repository`.
 - [ ] Implementar y probar la funcionalidad del menú: "Lista de todos los libros buscados/guardados".
 - [ ] Implementar *derived query* en Repository para buscar libros por Idioma localmente.
 
@@ -230,13 +230,13 @@ Además, pensando en los años de nacimiento y fallecimiento, es posible incluir
 ---
 
 ### Checklist de finalización
-- [ ] Configurar Entidad `@Entity` Autor en JPA con los atributos (nombre, año nacimiento, año fallecimiento).
-- [ ] Establecer la relación (`@OneToMany` o `@ManyToMany` simplificada a un autor por libro -> `@ManyToOne` en Libro) entre las entidades `Libro` y `Autor`.
-- [ ] Extraer el primer autor detectado en el JSON de Gutendex y mapearlo al objeto en Java para guardarlo/asociarlo al Libro.
-- [ ] Guardar en Base de Datos (PostgreSQL) garantizando que no se dupliquen autores si buscamos dos libros del mismo autor.
-- [ ] Implementar y probar funcionalidad del menú: "Lista de todos los autores (locales)".
-- [ ] Implementar *derived query* en Repository de Autor (ej: `findByAñoNacimientoLessThanEqualAndAñoFallecimientoGreaterThanEqual`) o su `@Query(JPQL)` equivalente, para buscar los autores vivos en un determinado año.
-- [ ] Implementar y probar la funcionalidad interactiva en el menú para autores vivos por año.
+- [x] Configurar Entidad `@Entity` Autor en JPA con los atributos (nombre, año nacimiento, año fallecimiento).
+- [x] Establecer la relación (`@OneToMany` o `@ManyToMany` simplificada a un autor por libro -> `@ManyToOne` en Libro) entre las entidades `Libro` y `Autor`.
+- [x] Extraer el primer autor detectado en el JSON de Gutendex y mapearlo al objeto en Java para guardarlo/asociarlo al Libro.
+- [x] Guardar en Base de Datos (PostgreSQL) garantizando que no se dupliquen autores si buscamos dos libros del mismo autor.
+- [x] Implementar y probar funcionalidad del menú: "Lista de todos los autores (locales)".
+- [x] Implementar *derived query* en Repository de Autor (ej: `findByAñoNacimientoLessThanEqualAndAñoFallecimientoGreaterThanEqual`) o su `@Query(JPQL)` equivalente, para buscar los autores vivos en un determinado año.
+- [x] Implementar y probar la funcionalidad interactiva en el menú para autores vivos por año.
 
 ---
 
@@ -259,12 +259,12 @@ Al crear los repositorios, recuerda realizar la conversión de los atributos del
 ---
 
 ### Checklist de finalización
-- [ ] Verificar conexión a BD PostgreSQL en `application.properties`.
-- [ ] Crear las clases modelo/entidad `@Entity` `Libro` y `Autor` con la información deserializada.
-- [ ] Configurar correctamente las relaciones JPA (`@ManyToOne`, `@OneToMany`) y el comportamiento de las llaves primarias (`@Id`).
-- [ ] Crear las interfaces `LibroRepository` y `AutorRepository` extendiendo de `JpaRepository`.
-- [ ] Construir lógica para evitar la inserción de autores y/o libros duplicados (Manejo de Optional o validación manual extra antes de `.save()`).
-- [ ] Asegurarse de realizar la persistencia en "cascada" (CascadeType/Persist/Merge) o guardar primero el autor y luego asignarlo al libro antes de guardarlo.
+- [x] Verificar conexión a BD PostgreSQL en `application.properties`.
+- [x] Crear las clases modelo/entidad `@Entity` `Libro` y `Autor` con la información deserializada.
+- [x] Configurar correctamente las relaciones JPA (`@ManyToOne`, `@OneToMany`) y el comportamiento de las llaves primarias (`@Id`).
+- [x] Crear las interfaces `LibroRepository` y `AutorRepository` extendiendo de `JpaRepository`.
+- [x] Construir lógica para evitar la inserción de autores y/o libros duplicados (Manejo de Optional o validación manual extra antes de `.save()`).
+- [x] Asegurarse de realizar la persistencia en "cascada" (CascadeType/Persist/Merge) o guardar primero el autor y luego asignarlo al libro antes de guardarlo.
 
 ---
 

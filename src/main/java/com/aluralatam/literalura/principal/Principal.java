@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -59,13 +60,13 @@ public class Principal {
                         buscarLibroPorTitulo();
                         break;
                     case 2:
-                        System.out.println("Opción 2 en construcción...");
+                        mostrarLibrosBuscados();
                         break;
                     case 3:
-                        System.out.println("Opción 3 en construcción...");
+                        mostrarAutoresGuardados();
                         break;
                     case 4:
-                        System.out.println("Opción 4 en construcción...");
+                        buscarAutoresVivosPorAnio();
                         break;
                     case 5:
                         System.out.println("Opción 5 en construcción...");
@@ -83,7 +84,29 @@ public class Principal {
         }
     }
 
+    private void buscarAutoresVivosPorAnio() {
+        System.out.println("Ingrese el año vivo de autor(es) que desea buscar:");
+        try {
+            var anio = teclado.nextInt();
+            teclado.nextLine(); // Consumir buffer
+
+            List<Autor> autoresVivos = autorRepository
+                    .findByFechaDeNacimientoLessThanEqualAndFechaDeFallecimientoGreaterThanEqual(anio, anio);
+
+            if (autoresVivos.isEmpty()) {
+                System.out.println("❌ No se encontraron autores vivos en nuestra base de datos para el año " + anio);
+            } else {
+                System.out.println("\n✍️ *** AUTORES VIVOS EN " + anio + " ***");
+                autoresVivos.forEach(System.out::println);
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("⚠️ Entrada inválida. Por favor, introduzca un año en formato numérico (ej: 1940).");
+            teclado.nextLine();
+        }
+    }
+
     private void buscarLibroPorTitulo() {
+
         System.out.println("Ingrese el nombre del libro que desea buscar:");
         var titulo = teclado.nextLine();
 
@@ -120,5 +143,25 @@ public class Principal {
         libroRepository.save(libro);
         System.out.println("\n✅ Libro guardado exitosamente: ");
         System.out.println(libro);
+    }
+
+    private void mostrarLibrosBuscados() {
+        var libros = libroRepository.findAll();
+        if (libros.isEmpty()) {
+            System.out.println("❌ No hay libros registrados en la base de datos aún.");
+        } else {
+            System.out.println("\n📚 *** LIBROS REGISTRADOS ***");
+            libros.forEach(System.out::println);
+        }
+    }
+
+    private void mostrarAutoresGuardados() {
+        var autores = autorRepository.findAll();
+        if (autores.isEmpty()) {
+            System.out.println("❌ No hay autores registrados en la base de datos aún.");
+        } else {
+            System.out.println("\n✍️ *** AUTORES REGISTRADOS ***");
+            autores.forEach(System.out::println);
+        }
     }
 }
